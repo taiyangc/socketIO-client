@@ -219,6 +219,8 @@ class _ListenerThread(Thread):
             except SocketIOConnectionError, error:
                 print error
                 self.cancel()
+                # Notify connection error
+                self._socketIO.disconnect()
                 break
             except SocketIOPacketError, error:
                 print error
